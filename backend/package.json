@@ -33,6 +33,7 @@
         "compression": "^1.7.4",
         "cors": "^2.8.5",
         "crypto": "^1.0.1",
+        "dotenv": "^17.2.1",
         "express": "^4.18.2",
         "express-rate-limit": "^6.8.0",
         "helmet": "^7.0.0",
@@ -40,6 +41,7 @@
         "mongoose": "^7.5.0",
         "morgan": "^1.10.0",
         "node-cron": "^3.0.2",
+        "twilio": "^5.8.0",
         "uuid": "^9.0.0",
         "ws": "^8.13.0"
     },

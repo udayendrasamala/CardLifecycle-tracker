@@ -2,6 +2,7 @@
 const CardJourney = require('../models/CardJourney');
 const { encrypt, decrypt } = require('../utils/encryption');
 const { broadcast } = require('../config/websocket');
+const { sendSMSToUser } = require('../services/smsService'); // Add this import
 
 class CardService {
   
@@ -54,6 +55,18 @@ class CardService {
         priority: cardJourney.priority,
         customerName: cardJourney.customerName
       });
+
+      // Send SMS to customer about card approval
+      try {
+        await sendSMSToUser(customerId, 'CARD_APPROVED', {
+          cardId: cardId,
+          customerName: customerName,
+          estimatedDelivery: estimatedDelivery.toDateString()
+        });
+      } catch (smsError) {
+        console.error('SMS sending failed:', smsError);
+        // Don't throw error for SMS failure, just log it
+      }
 
       return this.sanitizeCardData(cardJourney);
 
@@ -136,6 +149,18 @@ class CardService {
         location,
         failureReason
       });
+
+      // Send SMS to customer about status update
+      try {
+        await sendSMSToUser(cardJourney.customerId, 'CARD_STATUS_UPDATE', {
+          cardId: cardId,
+          newStatus: status,
+          location: location || 'Processing Center'
+        });
+      } catch (smsError) {
+        console.error('SMS sending failed:', smsError);
+        // Don't throw error for SMS failure, just log it
+      }
 
       // Trigger AI analysis for failures or delays
       if (status.includes('FAILED') || durationMinutes > 480) { // 8 hours
