@@ -84,6 +84,8 @@ const CardSearch = () => {
 
   const getStatusIcon = (status) => {
     const iconMap = {
+      'USER_CREATED': <User className="w-5 h-5 text-blue-600" />,
+      'UNDER_REVIEW': <Hash className="w-5 h-5 text-yellow-600" />,
       'DELIVERED': <CheckCircle className="w-5 h-5 text-green-600" />,
       'IN_TRANSIT': <Truck className="w-5 h-5 text-blue-600 animate-pulse" />,
       'OUT_FOR_DELIVERY': <Activity className="w-5 h-5 text-indigo-600 animate-pulse" />,
@@ -538,9 +540,9 @@ const CardSearch = () => {
               <h4 className="font-medium text-blue-800 mb-2">Search Options:</h4>
               <ul className="space-y-1 text-blue-700">
                 <li>• Card ID (e.g., CRD001234)</li>
-                <li>• Mobile Number (last 4 digits)</li>
-                <li>• PAN Number (masked format)</li>
+                <li>• Mobile Number (10 digits)</li>
                 <li>• Customer Name</li>
+                <li>• CustomerID</li>
               </ul>
             </div>
             <div>
@@ -548,8 +550,8 @@ const CardSearch = () => {
               <ul className="space-y-1 text-blue-700">
                 <li>• Use at least 3 characters</li>
                 <li>• Search is case-insensitive</li>
-                <li>• Partial matches are supported</li>
                 <li>• Click events for more details</li>
+                <li>• ApplicationId</li>
               </ul>
             </div>
           </div>

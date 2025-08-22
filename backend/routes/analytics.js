@@ -137,7 +137,7 @@ router.get('/performance/:stage', asyncHandler(async (req, res) => {
   const { days = 7 } = req.query;
   
   const validStages = [
-    'APPROVED', 'QUEUED_FOR_EMBOSSING', 'IN_EMBOSSING', 'EMBOSSING_COMPLETE',
+    'USER_CREATED','UNDER_REVIEW','APPROVED', 'QUEUED_FOR_EMBOSSING', 'IN_EMBOSSING', 'EMBOSSING_COMPLETE',
     'DISPATCHED', 'IN_TRANSIT', 'OUT_FOR_DELIVERY', 'DELIVERED'
   ];
   

@@ -6,7 +6,7 @@ const bottleneckAnalysisSchema = new mongoose.Schema({
     type: String, 
     required: true,
     enum: [
-      'APPROVED', 'QUEUED_FOR_EMBOSSING', 'IN_EMBOSSING', 'EMBOSSING_COMPLETE',
+      'USER_CREATED','UNDER_REVIEW','APPROVED', 'QUEUED_FOR_EMBOSSING', 'IN_EMBOSSING', 'EMBOSSING_COMPLETE',
       'EMBOSSING_FAILED', 'DISPATCHED', 'IN_TRANSIT', 'OUT_FOR_DELIVERY',
       'DELIVERED', 'DELIVERY_FAILED', 'RETURNED', 'DESTROYED'
     ]

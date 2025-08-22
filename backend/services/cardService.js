@@ -10,7 +10,7 @@ class CardService {
     try {
       const {
         cardId, customerId, customerName, mobileNumber,
-        panMasked, applicationId, priority = 'STANDARD', address
+        panMasked, applicationId, priority = 'STANDARD', address,message
       } = cardData;
 
       // Validation
@@ -29,16 +29,16 @@ class CardService {
         mobileNumber: encrypt(mobileNumber),
         panMasked,
         applicationId,
-        currentStatus: 'APPROVED',
+        currentStatus: 'USER_CREATED',
         priority,
         address: address ? encrypt(address) : null,
         estimatedDelivery,
         journey: [{
-          stage: 'APPROVED',
+          stage: 'USER_CREATED',
           source: 'card_management_service',
           location: 'System',
           operatorId: 'AUTO_APPROVAL',
-          eventData: { applicationId, priority }
+          eventData: { applicationId, priority , message }
         }],
         metadata: {
           region: this.extractRegionFromAddress(address),

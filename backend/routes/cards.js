@@ -53,7 +53,7 @@ router.get('/search', asyncHandler(async (req, res) => {
   if (!q || q.length < 3) {
     return res.status(400).json({
       success: false,
-      error: 'Search query must be at least 3 characters',
+      error: 'Search query must be at least 9 characters',
       requestId: req.requestId
     });
   }

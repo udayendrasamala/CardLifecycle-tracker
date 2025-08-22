@@ -1,10 +1,6 @@
 // middleware/index.js - Custom middleware
 const { v4: uuidv4 } = require('uuid');
 
-/**
- * Request logging middleware
- * Logs all incoming requests with unique ID and timing
- */
 const requestLogger = (req, res, next) => {
   const requestId = uuidv4();
   req.requestId = requestId;

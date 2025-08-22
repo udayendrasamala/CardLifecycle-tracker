@@ -29,12 +29,6 @@ const Layout = ({ children }) => {
       icon: Activity,
       current: location.pathname === '/analytics'
     },
-    {
-      name: 'Operations',
-      href: '/operations',
-      icon: Package,
-      current: location.pathname === '/operations'
-    }
   ];
 
   const getConnectionStatusColor = () => {
